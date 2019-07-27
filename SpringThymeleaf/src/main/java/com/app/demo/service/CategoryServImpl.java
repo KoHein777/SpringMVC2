@@ -28,9 +28,8 @@ public class CategoryServImpl implements CategoryService{
 	}
 
 	@Override
-	public void create(Category category) {
-		
-		categoryRepo.save(category);
+	public Category create(Category category) {
+		return categoryRepo.save(category);
 	}
 
 }

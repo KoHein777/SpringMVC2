@@ -1,30 +1,72 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+
+<!--  main-fragment (title, otherStaticResources, header, nav, mainContent, footer)  -->
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layouts/main-layout :: main-fragment(  
+                                                ~{::title},
+                                                ~{:: #about-static-resources},
+                                                ~{:: #about-header},
+                                                ~{:: #about-nav},
+                                                ~{:: #about-main-content},  
+                                                ~{:: #about-footer}
+                                               )}">
+
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
- <link href="../static/css/bootstrap.min.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+<title>Title of Category Page</title>
+
+<th:block id="about-static-resources">
+
+	<script type="text/javascript" src="../static/about.js"
+		th:src="@{/about.js}"></script>
+
+</th:block>
+
 </head>
 <body>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Category Id</th>
-      <th scope="col">Category Name</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr th:each="cat : ${categories}">
-      <th scope="row" th:text="${cate.id}">1</th>
-      <td th:text="${cate.name}>Mark</td>
-    </tr>
+	<div id="about-header">Category Page</div>
 
-  </tbody>
+	<div id="about-nav"
+		th:replace="~{/fragments/app-fragments :: nav-default}">Nav</div>
+
+	<div id="about-main-content">
+	<!-- 
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">Category Id</th>
+					<th scope="col">Category Name</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="cat : ${categories}">
+					<th scope="row" th:text="${cate.id}">1</th>
+					<td th:text="${cate.name}>Mark</td>
+   				 </tr>
+
+ 			 </tbody>
+		</table>
+		-->
+<table>
+    <thead>
+        <tr>
+            <th> Category ID </th>
+            <th> Category Name </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="book : ${categories}">
+            <td><span th:text="${book.id}"> Title </span></td>
+            <td><span th:text="${book.name}"> Author </span></td>
+        </tr>
+    </tbody>
 </table>
 <br>
-<a href="#" th:href="@{/category}" class="btn btn-primary">Back</a>
+<a href="#" th:href="@{/category}" class="btn btn-primary">Add Category</a>
 
-   <script src="../static/js/bootstrap.js" th:href="@{/js/bootstrap.js}"></script>
+	</div>
+
+
+	<div id="about-footer" th:replace="~{/fragments/app-fragments :: copyright}">Footer</div>
 </body>
 </html>

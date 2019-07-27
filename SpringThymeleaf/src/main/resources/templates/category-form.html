@@ -30,43 +30,30 @@
 		th:replace="~{/fragments/app-fragments :: nav-default}">Nav</div>
 
 	<div id="about-main-content">
-	<!-- 
-		<table class="table">
-			<thead>
-				<tr>
-					<th scope="col">Category Id</th>
-					<th scope="col">Category Name</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="cat : ${categories}">
-					<th scope="row" th:text="${cate.id}">1</th>
-					<td th:text="${cate.name}>Mark</td>
-   				 </tr>
 
- 			 </tbody>
-		</table>
-		-->
-<table>
-    <thead>
-        <tr>
-            <th> Category ID </th>
-            <th> Category Name </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr th:each="book : ${categories}">
-            <td><span th:text="${book.id}"> Title </span></td>
-            <td><span th:text="${book.name}"> Author </span></td>
-        </tr>
-    </tbody>
-</table>
-<br>
-<a href="#" th:href="@{/category}" class="btn btn-primary">Add Category</a>
+
+		<form action="#" th:action="@{/category}" th:object="${category}"
+			method="post">
+			<p>
+				Category Name: <input type="text" th:field="*{name}" />
+			</p>
+		
+			<p class="alert alert-danger" 
+			th:if="${#fields.errors('name')}" 
+			th:errors="*{name}"></p>
+			
+			<p>
+				<input type="submit" value="Submit" /> <input type="reset"
+					value="Reset" />
+			</p>
+		</form>
 
 	</div>
 
 
-	<div id="about-footer" th:replace="~{/fragments/app-fragments :: copyright}">Footer</div>
+	<div id="about-footer"
+		th:replace="~{/fragments/app-fragments :: copyright}">Footer</div>
+
+
 </body>
 </html>

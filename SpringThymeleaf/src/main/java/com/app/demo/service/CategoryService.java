@@ -9,8 +9,7 @@ import com.app.demo.model.Category;
 
 public interface CategoryService {
 	
-	void create(Category category);
-
+	Category create(Category category);
 	Category findById(int id);
 	List<Category> findAll();
 	

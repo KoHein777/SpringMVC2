@@ -1,10 +1,48 @@
 <!DOCTYPE html>
-<html>
+ 
+<!--  main-fragment (title, otherStaticResources, header, nav, mainContent, footer)  -->
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layouts/main-layout :: main-fragment(  
+                                                ~{::title},
+                                                ~{:: #about-static-resources},
+                                                ~{:: #about-header},
+                                                ~{:: #about-nav},
+                                                ~{:: #about-main-content},  
+                                                ~{:: #about-footer}
+                                               )}">
+                                                
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+    <title>Title of About Page</title>
+     
+    <th:block id="about-static-resources">
+       
+        <script type="text/javascript" src="../static/about.js" th:src="@{/about.js}"></script>
+       
+    </th:block>
+     
 </head>
 <body>
-
+ 
+    <div id="about-header">
+        
+       About Page
+        
+    </div>
+     
+    <div id="about-nav" th:replace="~{/fragments/app-fragments :: nav-default}">
+         Nav
+    </div>
+ 
+    <div id="about-main-content">
+        <h2>About</h2>
+        <div>Content of About Page</div>
+    </div>
+     
+     
+    <div id="about-footer" th:replace="~{/fragments/app-fragments :: copyright}">
+        Footer
+    </div>
+     
+     
 </body>
 </html>
