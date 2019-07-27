@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+ <link href="../static/css/bootstrap.min.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+</head>
+<body>
+<div th:replace="~{/layout/master::nav-default}">
+</div>
+<div>
+ <form th:action="@{/category}" th:object="${category}" method="post">
+	<label for="name">Category Name</label>
+	<input id="name"
+	th:field ="*{name}" 
+	class="form-control" placeholder="Enter Name" type="text"/>
+	<small th:if="${#fields.errors('name')}" th:error="*{name}" class="text-danger"></small>
+	<button type="submit" class="btn">Submit</button>
+ </form>
+</div>
+
+
+</body>
+</html>

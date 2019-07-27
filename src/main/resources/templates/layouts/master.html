@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <meta charset="UTF-8" />
+      <title>Welcome</title>
+    <!--  <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/> --> 
+     <link  href="../../static/css/bootstrap.min.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+    
+   </head>
+   <body>
+ 
+<nav 
+ th:fragment = "nav-default"
+ class="navbar navbar-light bg-light">
+    <ul>
+        <li><a th:href="@{/}">Home</a></li>
+        <li><a th:href="@{/products}">Products</a></li>
+        <li><a th:href="@{/about}">About</a></li>
+    </ul>
+  <form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>
+</nav>
+
+   </body>
+    
+</html>
