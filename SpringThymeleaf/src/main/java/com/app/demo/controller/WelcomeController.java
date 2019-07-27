@@ -11,7 +11,7 @@ public class WelcomeController {
  @RequestMapping(value = "/", method = RequestMethod.GET)
 	public String welcome(Model model) {
 		model.addAttribute("message","Welcome Spring MVC");
-		return "master";
+		return "home";
 		
 	}
 
