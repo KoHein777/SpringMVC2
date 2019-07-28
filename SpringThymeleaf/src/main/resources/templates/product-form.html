@@ -32,23 +32,58 @@
     </div>
  
     <div id="products-main-content">
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th> Product ID </th>
-            <th> Product Name </th>
-            <th> Product Price </th>
-            <th> Product Quantity </th>
-            <th> Last Updated </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr th:each="product : ${products}">
-            <td><span th:text="${product.id}"> Title </span></td>
-            <td><span th:text="${product.name}"> Author </span></td>
-        </tr>
-    </tbody>
-</table>
+  
+  		<form action="#" th:action="@{/product}" th:object="${product}"
+			method="post">
+			
+			<p>
+				Product Name: <input type="text" th:field="*{name}" />
+			</p>
+			<p class="alert alert-danger" 
+			th:if="${#fields.errors('name')}" 
+			th:errors="*{name}"></p>
+			
+			<p>
+				Product Price: <input type="number" th:field="*{price}" />
+			</p>
+			<p class="alert alert-danger" 
+			th:if="${#fields.errors('price')}" 
+			th:errors="*{price}"></p>
+			
+			<p>
+				Product Quantity: <input type="number" th:field="*{quantity}" />
+			</p>
+			
+			<p>
+				Last Updated: <input type="date" th:field="*{lastUpdate}" />
+			</p>
+
+			
+			<div>
+			<label for="Category">Category</label>
+			<select name=""
+			th:field="*{category}"
+			 id="Category">
+				<option  
+				th:each="cat : ${categories}"
+				th:value="${cat.id}"
+				th:text = "${cat.name}"
+				></option>
+			</select>
+			</div>
+			
+			
+			
+			
+			
+			
+			<p>
+				<input type="submit" value="Submit" /> <input type="reset"
+					value="Reset" />
+			</p>
+		</form>
+  
+  
     </div>
      
      

@@ -28,11 +28,6 @@ public class WelcomeController {
 		
 	}
  
- @RequestMapping("/products")
- public String products() {
-	 System.out.println("product get method");
-     return "products";
- }
 
  @RequestMapping("/about")
  public String about() {
